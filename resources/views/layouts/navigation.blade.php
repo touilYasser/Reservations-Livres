@@ -5,17 +5,43 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="{{ Auth::user()->role==='bibliothecaire' ? route('bibliothecaire.dashboard') : route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="Auth::user()->role==='bibliothecaire' ? route('bibliothecaire.dashboard') : route('dashboard')" :active="Auth::user()->role === 'bibliothecaire' ? request()->routeIs('bibliothecaire.dashboard') : request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    {{-- Bibliothecaire Links --}}
+                    @if(Auth::user()->role === 'bibliothecaire')
+                        <x-nav-link href="/bibliothecaire/livres" :active="request()->routeIs('bibliothecaire.livre')">
+                            {{ __('Livres') }}
+                        </x-nav-link>
+                        <x-nav-link href="/bibliothecaire/reservations" :active="request()->routeIs('bibliothecaire.reservation')">
+                            {{ __('Reservations') }}
+                        </x-nav-link>
+                        <x-nav-link href="/bibliothecaire/etudiants" :active="request()->routeIs('bibliothecaire.etudiant')">
+                            {{ __('Etudiants') }}
+                        </x-nav-link>
+                    @endif
+
+
+                    {{-- Etudiant Links --}}
+                    @if(Auth::user()->role === 'etudiant')
+                        <x-nav-link href="/livres" :active="request()->routeIs('livre')">
+                            {{ __('Livres') }}
+                        </x-nav-link>
+                        <x-nav-link href="/reservations" :active="request()->routeIs('reservation')">
+                            {{ __('Mes Reservations') }}
+                        </x-nav-link>
+                    @endif
                 </div>
+
+                
             </div>
 
             <!-- Settings Dropdown -->
