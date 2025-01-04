@@ -18,7 +18,7 @@
 
                     {{-- Bibliothecaire Links --}}
                     @if(Auth::user()->role === 'bibliothecaire')
-                        <x-nav-link href="/bibliothecaire/livres" :active="request()->routeIs('bibliothecaire.livre')">
+                        <x-nav-link href="{{route('bibliothecaire.livre.index')}}" :active="request()->routeIs('bibliothecaire.livre.index')">
                             {{ __('Livres') }}
                         </x-nav-link>
                         <x-nav-link href="/bibliothecaire/reservations" :active="request()->routeIs('bibliothecaire.reservation')">
