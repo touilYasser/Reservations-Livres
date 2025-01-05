@@ -21,11 +21,8 @@
                         <x-nav-link href="{{route('bibliothecaire.livre.index')}}" :active="request()->routeIs('bibliothecaire.livre.index')">
                             {{ __('Livres') }}
                         </x-nav-link>
-                        <x-nav-link href="/bibliothecaire/reservations" :active="request()->routeIs('bibliothecaire.reservation')">
+                        <x-nav-link href="/bibliothecaire/reservations" :active="request()->routeIs('bibliothecaire.reservations.index')">
                             {{ __('Reservations') }}
-                        </x-nav-link>
-                        <x-nav-link href="/bibliothecaire/etudiants" :active="request()->routeIs('bibliothecaire.etudiant')">
-                            {{ __('Etudiants') }}
                         </x-nav-link>
                     @endif
 
@@ -35,7 +32,7 @@
                         <x-nav-link href="{{route('etudiant.livre.index')}}" :active="request()->routeIs('etudiant.livre.index')">
                             {{ __('Livres') }}
                         </x-nav-link>
-                        <x-nav-link href="/reservations" :active="request()->routeIs('reservation')">
+                        <x-nav-link href="{{route('etudiant.reservations.index')}}" :active="request()->routeIs('etudiant.reservations.index')">
                             {{ __('Mes Reservations') }}
                         </x-nav-link>
                     @endif

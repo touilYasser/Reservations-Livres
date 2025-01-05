@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -48,7 +49,7 @@ class User extends Authenticatable
 
     // Relation : un utilisateur a plusieurs réservations
     public function reservations()
-    {
-        return $this->hasMany(Reservation::class);
-    }
+{
+    return $this->hasMany(Reservation::class);
+}
 }

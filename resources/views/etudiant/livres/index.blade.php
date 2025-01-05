@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                   <h2 class="fw-bold h-2">Reserver un livre</h2>
+                   <h2 class="fw-bold lead">Reserver un livre</h2>
                    <table class="table table-hovered mt-4">
                     <thead>
                         <tr>
@@ -26,7 +26,12 @@
                                 <td class="align-middle">{{ $livre->auteur }}</td>
                                 <td class="align-middle text-success">{{ $livre->status }}</td>
                                 <td class="align-middle">
-                                    <a href="" class="btn btn-primary btn-sm fw-bold">Reserver</a>
+                                    <form method="POST" action="{{ route('etudiant.reservations.store', $livre->id) }}">
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            Réserver
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @empty
@@ -44,4 +49,5 @@
             </div>
         </div>
     </div>
+    @include('components.footer')
 </x-app-layout>

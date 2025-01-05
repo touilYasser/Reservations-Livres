@@ -13,6 +13,7 @@ class Livre extends Model
     protected $fillable = [
         'titre',
         'auteur',
+        'status',
     ];
 
     // Relation : un livre peut avoir plusieurs réservations

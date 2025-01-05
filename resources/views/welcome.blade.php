@@ -25,7 +25,7 @@
         <h2 class="text-center text-3xl font-bold mb-4">Bienvenue sur notre plateforme de réservation de livres</h2>
         <p class="text-center text-gray-700 mb-6">Découvrez notre collection et réservez vos livres préférés en ligne.</p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-5">
             <div class="bg-white p-4 shadow-md rounded">
                 <h3 class="text-lg font-semibold mb-2">Accès pour les étudiants</h3>
                 <p class="text-gray-600 mb-4">Explorez nos collections, réservez des livres et suivez vos emprunts en cours.</p>
@@ -44,10 +44,6 @@
         </div>
     </main>
 
-    <footer class="bg-gray-800 text-white py-4 mt-10" style="position: fixed; bottom: 0; width: 100%;">
-        <div class="container mx-auto text-center fw-bold">
-            &copy; {{ date('Y') }} Bibliothèque en ligne. Tous droits réservés.
-        </div>
-    </footer>
+    @include('components.footer')
 </body>
 </html>
