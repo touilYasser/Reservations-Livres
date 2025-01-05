@@ -32,7 +32,7 @@
 
                     {{-- Etudiant Links --}}
                     @if(Auth::user()->role === 'etudiant')
-                        <x-nav-link href="/livres" :active="request()->routeIs('livre')">
+                        <x-nav-link href="{{route('etudiant.livre.index')}}" :active="request()->routeIs('etudiant.livre.index')">
                             {{ __('Livres') }}
                         </x-nav-link>
                         <x-nav-link href="/reservations" :active="request()->routeIs('reservation')">

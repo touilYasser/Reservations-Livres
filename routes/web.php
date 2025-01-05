@@ -23,6 +23,8 @@ Route::middleware('auth')->group(function () {
 // Etudiant routes
 Route::middleware(['auth', 'EtudiantMiddleware'])->group(function () {
     route::get('/dashboard',[EtudiantController::class,'index'])->name('dashboard');
+    route::get('/livres',[\App\Http\Controllers\Etudiant\LivreController::class,'index'])->name('etudiant.livre.index');
+    Route::post('/livres/{livre}/reserver', [\App\Http\Controllers\Etudiant\ReservationController::class, 'store'])->name('etudiant.livre.reserver');
 });
 
 

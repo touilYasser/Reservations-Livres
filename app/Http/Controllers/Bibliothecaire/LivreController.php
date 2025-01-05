@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class LivreController extends Controller
 {
     public function index(){
-        $livres = Livre::all();
+        $livres = Livre::paginate(10);
         return view('Bibliothecaire.livres.index', compact('livres'));
     }
     public function create(){
