@@ -12,7 +12,7 @@ class ReservationController extends Controller
 {
 
     public function index(){
-    $reservations = Reservation::where('user_id', Auth::id())->with('livre')->paginate(10);
+    $reservations = Reservation::where('user_id', Auth::id())->with('livre')->paginate(4);
     $enCours = Reservation::where('user_id', Auth::id())->where('status', 'en_cours')->count();
     $rendu = Reservation::where('user_id', Auth::id())->where('status', 'rendu')->count();
     $retard = Reservation::where('user_id', Auth::id())->where('status', 'overdue')->count();
@@ -36,7 +36,7 @@ class ReservationController extends Controller
 
     $livre->update(['status' => 'reserver']);
 
-    return redirect()->route('etudiant.reservations.index');
+    return redirect()->route('etudiant.reservations.index')->with('success', 'Livre reserver avec succes.');
 }
 
 public function return($id)
@@ -68,7 +68,7 @@ public function destroy($id)
 
     $reservation->delete();
 
-    return redirect()->route('etudiant.reservations.index');
+    return redirect()->route('etudiant.reservations.index')->with('success','la reservation a bien ete annule');
 }
 
 

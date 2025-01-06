@@ -21,7 +21,7 @@ class LivreController extends Controller
             'auteur' => 'required',
         ]);
         Livre::create($livre);
-        return redirect()->route('bibliothecaire.livre.index');
+        return redirect()->route('bibliothecaire.livre.index')->with('success','Livre ajoute avec succes');
     }
 
     public function edit($id){
@@ -35,11 +35,11 @@ class LivreController extends Controller
             'auteur' => 'required',
         ]);
         Livre::findOrFail($id)->update($livre);
-        return redirect()->route('bibliothecaire.livre.index');
+        return redirect()->route('bibliothecaire.livre.index')->with('success','Livre mise a jour avec succes');;
     }
 
     public function destroy($id){
         Livre::findOrFail($id)->delete();
-        return redirect()->route('bibliothecaire.livre.index');
+        return redirect()->route('bibliothecaire.livre.index')->with('success','Livre supprime avec succes');;
     }
 }
